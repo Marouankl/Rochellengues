@@ -1,0 +1,138 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\SejourRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=SejourRepository::class)
+ */
+class Sejours
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private ?int $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sejours;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $duree;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $langue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pays;
+
+    /**
+     * @return mixed
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+    /**
+     * @param mixed $pays
+     */
+    public function setPays($pays): void
+    {
+        $this->pays = $pays;
+    }
+
+
+
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getSejours(): ?string
+    {
+        return $this->sejours;
+    }
+
+    public function setSejours(string $sejours): self
+    {
+        $this->sejours = $sejours;
+
+        return $this;
+    }
+
+    public function getDuree(): ?\DateTimeInterface
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(\DateTimeInterface $duree): self
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getLangue(): ?string
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(string $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+
+
+
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block body %}
+    {% block header %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('home') }}">
+                    <img src="{{ asset('img/logo.jpg') }}" style="border-radius: 50%;" alt="Logo" width="70" height="70" class="d-inline-block align-top"> <br/>ochellengues
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('formations') }}">Formations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path ('app_register') }}">Inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('home')}}#ance">Publier</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('home')}}#ance">Annonce</a>
+                                    <a class="dropdown-item" href="{{ path('home')}}#evt">Evenement</a>
+                                </div>
+                            </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('user') }}">Profil</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    {% endblock header %}
+
+    <div class="container">
+        {% for message in app.flashes('message') %}
+            <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 class=page-header>Nous contacter</h1>
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                {{form_end(form)}}
+                <a href="{{ path('home') }}" class="btn blue">Retour</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
