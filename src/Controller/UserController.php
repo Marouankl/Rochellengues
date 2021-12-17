@@ -8,6 +8,7 @@ use App\Entity\Annonces;
 use App\Entity\User;
 use App\Form\ModifierProfilType;
 use App\Form\UserType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,6 +28,19 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig',["annonces"=> $annonces]);
 
+    }
+
+    /**
+     * @Route("/list/users", methods="GET")
+     */
+    public function getListUsers(): Response
+    {
+
+        // récupérer data de la base de donnée
+
+        $listUSER = tableau ;
+
+        return new JsonResponse([ $listUSER]);
     }
 
 

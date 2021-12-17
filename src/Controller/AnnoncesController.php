@@ -6,6 +6,7 @@ use App\Entity\Annonces;
 use App\Form\AnnoncesType;
 use App\Repository\AnnoncesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,6 +57,16 @@ class AnnoncesController extends AbstractController
         return $this->render('annonces/show.html.twig', [
             'annonce' => $annonce,
         ]);
+    }
+
+    /**
+     * @Route("/list", methods={"GET"})
+     */
+    public function showAnnonces(AnnoncesRepository $annoncesRepository): Response
+
+    {
+        $result = $annoncesRepository->findAll();
+        return new JsonResponse($result);
     }
 
     /**
