@@ -46,6 +46,7 @@
 
         {{ encore_entry_script_tags('app') }}
 
+
             <!-- Renders app.js & a webpack runtime.js file
                 <script src="/build/runtime.js"></script>
                 <script src="/build/app.js"></script> -->
@@ -54,6 +55,7 @@
 </head>
 <body>
 {% block body %}
+    {{ encore_entry_script_tags('main') }}
 {% endblock %}
 </body>
 </html>

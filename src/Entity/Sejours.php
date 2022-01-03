@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\SejourRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=SejourRepository::class)
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get", "put", "delete"}
+ * )
  */
 class Sejours
 {
@@ -132,7 +137,10 @@ class Sejours
         return $this;
     }
 
+    public function __toString(): string{
+            return $this->sejours;
 
+    }
 
 
 }

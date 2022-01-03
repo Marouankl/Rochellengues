@@ -11,11 +11,17 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
  * @ORM\Entity(repositoryClass=AnnoncesRepository::class)
  * @Vich\Uploadable
+ * @ApiResource(
+ *
+ *      collectionOperations={"get"},
+ *     itemOperations={"get", "put", "delete"}
+ * )
  *
  */
 class Annonces
@@ -71,7 +77,7 @@ class Annonces
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $categorie;
+   // private $categorie;
 
     /**
      * @ORM\Column(type="datetime")
@@ -129,7 +135,7 @@ class Annonces
 
 
 
-    public function getCategorie(): ?Categorie
+  /* public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
@@ -139,7 +145,7 @@ class Annonces
         $this->categorie = $categorie;
 
         return $this;
-    }
+    }*/
 
 
     public function getImageFile()
@@ -189,5 +195,9 @@ class Annonces
 
     }
 
+    public function __toString(): string{
+        return $this->id;
+
+    }
 
 }

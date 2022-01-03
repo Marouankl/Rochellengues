@@ -14,16 +14,20 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
+    // enables Vue.js support
+    .enableVueLoader()
+
     /*
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.js')
+    .addEntry('app', './assets/liste/app.js')
+
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-    //.enableStimulusBridge('./assets/controllers.json')
+    .enableStimulusBridge('./assets/liste/controllers.json')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -48,8 +52,6 @@ Encore
     .configureBabel((config) => {
         config.plugins.push('@babel/plugin-proposal-class-properties');
     })
-
-    .enableVueLoader()
 
     // enables @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {

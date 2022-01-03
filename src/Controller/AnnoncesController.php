@@ -50,6 +50,22 @@ class AnnoncesController extends AbstractController
     }
 
     /**
+     * @Route("/list/annonces",name="liste" methods="GET")
+
+    public function getListAnnonces(): Response
+    {
+
+        // récupérer data de la base de donnée
+        // $listUSER = tableau ;
+        // return new JsonResponse([ $listUSER]);
+        $name = "klai";
+        return new JsonResponse([
+            'success' => true
+        ]);
+    } */
+
+
+    /**
      * @Route("/{id}", name="annonces_show", methods={"GET"})
      */
     public function show(Annonces $annonce): Response
@@ -59,15 +75,7 @@ class AnnoncesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/list", methods={"GET"})
-     */
-    public function showAnnonces(AnnoncesRepository $annoncesRepository): Response
 
-    {
-        $result = $annoncesRepository->findAll();
-        return new JsonResponse($result);
-    }
 
     /**
      * @Route("/{id}/edit", name="annonces_edit", methods={"GET","POST"})

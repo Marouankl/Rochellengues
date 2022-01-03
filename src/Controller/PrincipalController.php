@@ -30,12 +30,24 @@ class PrincipalController extends AbstractController
     }
 
     /**
-     * @return  \Symfony\Component\HttpFoundation\Response
+     * @Route("/liste", name="liste")
+     */
+    public function liste(): Response
+    {
+        return $this->render('principal/listeAnnonces.hmtl.twig', [
+            'controller_name' => 'PrincipalControllerr',
+
+
+        ]);
+    }
+
+    /**
+     * @return  Response
      * @Route("/formations", name="formations")
      */
     public function formations(): Response
     {
-        return $this->render('principal/formations .html.twig', [
+        return $this->render('principal/formations.html.twig', [
             'controller_name' => 'PrincipalController',
 
 
@@ -53,6 +65,7 @@ class PrincipalController extends AbstractController
 
         ]);
     }
+
     /**
      * @Route("/404", name="404")
      */

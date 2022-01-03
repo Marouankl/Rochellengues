@@ -37,10 +37,12 @@ class UserController extends AbstractController
     {
 
         // récupérer data de la base de donnée
-
-        $listUSER = tableau ;
-
-        return new JsonResponse([ $listUSER]);
+        // $listUSER = tableau ;
+        // return new JsonResponse([ $listUSER]);
+        $name = "klai";
+        return new JsonResponse([
+            'success' => true
+        ]);
     }
 
 

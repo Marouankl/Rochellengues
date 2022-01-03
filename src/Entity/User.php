@@ -8,10 +8,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ *  @ApiResource(
+ *
+ *
+ * )
+ *
 
  */
 class User  implements UserInterface
@@ -261,7 +267,7 @@ class User  implements UserInterface
     }
     public function __toString(): string
     {
-        return (string)$this->getEmail();
+        return $this->getEmail();
     }
 
     public function supportsClass($class)

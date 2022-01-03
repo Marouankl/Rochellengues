@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get", "put", "delete"}
+ * )
  */
 class Contact
 {
@@ -71,5 +76,10 @@ class Contact
         $this->message = $message;
 
         return $this;
+    }
+
+    public function __toString(): string{
+        return $this->id;
+
     }
 }
