@@ -25,7 +25,7 @@ Encore
      */
 
      .addEntry('app', './assets/liste/app.js')
-     //.addEntry('main','./assets/galerie/main.js')
+     .addEntry('main','./assets/galerie/main.js')
 
 
 

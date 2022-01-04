@@ -12,8 +12,9 @@ class SejoursType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
-            ->add('sejours')
+            ->add('titre')
             ->add('duree')
             ->add('prix')
             ->add('langue')

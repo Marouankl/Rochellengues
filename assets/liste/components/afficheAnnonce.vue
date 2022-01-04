@@ -1,7 +1,7 @@
 <template>
   <div>
 
-
+<h1>hello word</h1>
 
 
   </div>
@@ -20,26 +20,26 @@ export default {
   },
   data() {
     return{
-      images:[]
+
     }
 
 
 
   },
   mounted() {
-    console.log(this.$route.query) ;
     this.getAnnoncesParpage(this.$route.query)
   },
   methods: {
+  getAnnoncesParpage() {
+    axios.get(`http://127.0.0.1:8000/api/annonces/${id}`)
+        .then((response) => {
+          console.log(response);
+          setData(response.data['hydra:member']);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-  getAnnoncesParpage(id) {
-    let url = "http://127.0.0.1:8000/api/annonces/" + this.id;
-    axios.get(url).then((response) => {
-      this.annonces = response.data['hydra:member'];
-      console.log(this.annonces );
-    }).catch(error => {
-      console.log(error);
-    });
   }
   },
 

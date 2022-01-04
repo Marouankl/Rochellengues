@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Sejours</th>
+                <th>Titre</th>
                 <th>Duree</th>
                 <th>Prix</th>
                 <th>Langue</th>
@@ -22,7 +22,7 @@
         {% for sejour in sejours %}
             <tr>
                 <td>{{ sejour.id }}</td>
-                <td>{{ sejour.sejours }}</td>
+                <td>{{ sejour.titre }}</td>
                 <td>{{ sejour.duree ? sejour.duree|date('Y-m-d') : '' }}</td>
                 <td>{{ sejour.prix }}</td>
                 <td>{{ sejour.langue }}</td>

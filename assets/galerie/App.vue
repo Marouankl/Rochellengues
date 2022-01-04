@@ -10,7 +10,7 @@
 import galeries from "./components/galeries";
 
 export default {
-  name: "Main.vue",
+  name: "App.vue",
   components:{
     galeries
   }

@@ -17,24 +17,23 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link active" aria-current="page" href="">Accueil</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('formations') }}">Formations</a>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('liste')}}">Annonce</a>
+                                <a class="dropdown-item" href="{{ path('sejours_index')}}">Sejour</a>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path ('app_register') }}">Inscription</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home')}}#ance">Publier</a>
-                        </li>
-                        <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ path('home')}}#ance">Annonce</a>
-                                    <a class="dropdown-item" href="{{ path('home')}}#evt">Evenement</a>
-                                </div>
-                            </li>-->
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                         </li>
@@ -46,7 +45,6 @@
                 </div>
             </div>
         </nav>
-
     {% endblock header %}
 <container>
     {% for flashError in app.flashes('verify_email_error') %}

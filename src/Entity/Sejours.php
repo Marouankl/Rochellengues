@@ -25,7 +25,7 @@ class Sejours
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $sejours;
+    private $titre;
 
     /**
      * @ORM\Column(type="date")
@@ -77,17 +77,7 @@ class Sejours
         return $this->id;
     }
 
-    public function getSejours(): ?string
-    {
-        return $this->sejours;
-    }
 
-    public function setSejours(string $sejours): self
-    {
-        $this->sejours = $sejours;
-
-        return $this;
-    }
 
     public function getDuree(): ?\DateTimeInterface
     {
@@ -130,6 +120,22 @@ class Sejours
         return $this->age;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre): void
+    {
+        $this->titre = $titre;
+    }
+
     public function setAge(int $age): self
     {
         $this->age = $age;
@@ -138,7 +144,7 @@ class Sejours
     }
 
     public function __toString(): string{
-            return $this->sejours;
+            return $this->id;
 
     }
 

@@ -2,7 +2,7 @@
 
 <div>
 
-  <h1>Liste annonces</h1>
+  <h1>Listes annonces</h1>
 
 
   <div class="panel panel-primary" v-show="annonces.length">
@@ -32,7 +32,7 @@
 
 
 
-              <td><router-link class="btn btn-warning btn-block" to="/affiche/:id">Afficher annonce</router-link></td>
+              <td><router-link class="btn btn-warning btn-block" to='/affiche/:id'>Afficher annonce</router-link></td>
             </tr>
           </tbody>
     </table>
@@ -44,8 +44,10 @@
         small
     ></b-table>
     <p class="mt-3"> Page: {{ currentPage }}</p>
-  </div>
+    <td><router-link class="btn btn-primary" to="listSejour">Listes les Sejours</router-link></td>
 
+  </div>
+  <router-view></router-view>
 </div>
 </template>
 
@@ -56,6 +58,7 @@ import Vue from "vue";
 
 import  BootstrapVue from "bootstrap-vue";
 import EditAnnonce from "./afficheAnnonce";
+import listSejour from "./listSejour";
 
 
 Vue.use(BootstrapVue)
@@ -66,7 +69,8 @@ export default {
   name: "listAnnonce",
 
   components: {
-    EditAnnonce
+    EditAnnonce,
+    listSejour
 
   },
   props: {

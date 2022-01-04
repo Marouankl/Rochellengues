@@ -11,12 +11,14 @@
 
 import listAnnonce from "./components/listAnnonce";
 import afficheAnnonce from "./components/afficheAnnonce";
+import listSejour from "./components/listSejour";
 
 export default {
   name: "App",
   components:{
     listAnnonce,
-    afficheAnnonce
+    afficheAnnonce,
+    listSejour
   }
 }
 </script>
