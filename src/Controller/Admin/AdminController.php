@@ -23,7 +23,6 @@ class AdminController extends AbstractDashboardController
 
 
 
-    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
         $routeBuilder = $this->get(AdminUrlGenerator::class);
         $url = $routeBuilder->setController(UserCrudController::class)->generateUrl();
 
@@ -41,9 +40,9 @@ class AdminController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Categorie', 'fas fa-map-marker-alt', Categorie::class);
-        yield MenuItem::linkToCrud('Contact', 'fas fa-comments', Contact::class);
-        yield MenuItem::linkToCrud('Sejours', 'fas fa-map-marker-alt', Sejours::class);
-        yield MenuItem::linkToCrud('Annonces', 'fas fa-comments', Annonces::class);
+        yield MenuItem::linkToCrud('Categorie', 'fab fa-buffer', Categorie::class);
+        yield MenuItem::linkToCrud('Contact', 'fal fa-phone', Contact::class);
+        yield MenuItem::linkToCrud('Sejours', 'fas fa-caravan', Sejours::class);
+        yield MenuItem::linkToCrud('Annonces', 'fas fa-bullhorn', Annonces::class);
     }
 }
