@@ -27,10 +27,7 @@ class Sejours
      */
     private $titre;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $duree;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -53,10 +50,21 @@ class Sejours
     private $pays;
 
     /**
-     * @ORM\ManyToOne(targetEntity=categorie::class, inversedBy="sejours")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="sejours")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $start_date;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $end_date;
+
 
     /**
      * @return mixed
@@ -85,17 +93,7 @@ class Sejours
 
 
 
-    public function getDuree(): ?\DateTimeInterface
-    {
-        return $this->duree;
-    }
 
-    public function setDuree(\DateTimeInterface $duree): self
-    {
-        $this->duree = $duree;
-
-        return $this;
-    }
 
     public function getPrix(): ?int
     {
@@ -162,6 +160,30 @@ class Sejours
     public function setCategorie(?categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->start_date;
+    }
+
+    public function setStartDate(\DateTimeInterface $start_date): self
+    {
+        $this->start_date = $start_date;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->end_date;
+    }
+
+    public function setEndDate(\DateTimeInterface $end_date): self
+    {
+        $this->end_date = $end_date;
 
         return $this;
     }

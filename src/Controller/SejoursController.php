@@ -59,6 +59,8 @@ class SejoursController extends AbstractController
         ]);
     }
 
+
+
     /**
      * @Route("/{id}/edit", name="sejours_edit", methods={"GET", "POST"})
      */

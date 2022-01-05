@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Categorie;
 use App\Entity\Sejours;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,11 +16,13 @@ class SejoursType extends AbstractType
 
         $builder
             ->add('titre')
-            ->add('duree')
+            ->add('start_date')
+            ->add('end_date')
             ->add('prix')
             ->add('langue')
             ->add('age')
             ->add('pays')
+            ->add('categorie',EntityType::class, ['class' => Categorie::class])
         ;
     }
 

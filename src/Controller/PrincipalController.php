@@ -28,7 +28,17 @@ class PrincipalController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/sejour", name="sejour")
+     */
+    public function sejour(): Response
+    {
+        return $this->render('principal/sejour.html.twig', [
+            'controller_name' => 'PrincipalController',
 
+
+        ]);
+    }
     /**
      * @Route("/liste", name="liste")
      */

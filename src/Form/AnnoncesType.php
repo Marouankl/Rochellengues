@@ -31,7 +31,7 @@ class AnnoncesType extends AbstractType
             ->add('imageFile', VichImageType::class, ['required'=>false])
             ->add('update_at')
             ->add('user',EntityType::class,['class' => User::class])
-            //->add('categorie',EntityType::class, ['class' => Categorie::class])
+            ->add('categorie',EntityType::class, ['class' => Categorie::class])
         ;
     }
 
