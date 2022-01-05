@@ -53,6 +53,12 @@ class Sejours
     private $pays;
 
     /**
+     * @ORM\ManyToOne(targetEntity=categorie::class, inversedBy="sejours")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
+    /**
      * @return mixed
      */
     public function getPays()
@@ -146,6 +152,18 @@ class Sejours
     public function __toString(): string{
             return $this->id;
 
+    }
+
+    public function getCategorie(): ?categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
     }
 
 

@@ -37,10 +37,16 @@ class Categorie
      */
     private $categorie;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Sejours::class, mappedBy="categorie")
+     */
+    private $sejours;
+
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
         $this->categorie = new ArrayCollection();
+        $this->sejours = new ArrayCollection();
     }
 
 
@@ -148,6 +154,36 @@ class Categorie
     public function __toString(): string
     {
         return (string)$this->getNom();
+    }
+
+    /**
+     * @return Collection|Sejours[]
+     */
+    public function getSejours(): Collection
+    {
+        return $this->sejours;
+    }
+
+    public function addSejour(Sejours $sejour): self
+    {
+        if (!$this->sejours->contains($sejour)) {
+            $this->sejours[] = $sejour;
+            $sejour->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSejour(Sejours $sejour): self
+    {
+        if ($this->sejours->removeElement($sejour)) {
+            // set the owning side to null (unless already changed)
+            if ($sejour->getCategorie() === $this) {
+                $sejour->setCategorie(null);
+            }
+        }
+
+        return $this;
     }
 
 
