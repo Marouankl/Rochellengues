@@ -3,38 +3,27 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-/**
- * @ORM\Entity(repositoryClass=ContactRepository::class)
- * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get", "put", "delete"}
- * )
- */
+#[ORM\Entity(repositoryClass:ContactRepository::class)]
+#[ApiResource]
 class Contact
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORm\Column(type: Types::INTEGER)]
+    private int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $nom;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $email;
 
-    /**
-     * @ORM\Column(type="text")
-     */
+
+    #[ORm\Column(type: Types::TEXT)]
     private $message;
 
     public function getId(): ?int

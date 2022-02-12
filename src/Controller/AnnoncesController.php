@@ -11,14 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/annonces")
- */
+
+#[Route("/annonces")]
 class AnnoncesController extends AbstractController
 {
-    /**
-     * @Route("/", name="annonces_index", methods={"GET"})
-     */
+
+    #[Route("/",name:"annonces_index",methods: ['GET'])]
     public function index(AnnoncesRepository $annoncesRepository): Response
     {
         return $this->render('annonces/index.html.twig', [
@@ -26,9 +24,8 @@ class AnnoncesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="annonces_new", methods={"GET","POST"})
-     */
+
+    #[Route("/new",name:"annonces_new",methods: ['GET','POST'])]
     public function new(Request $request): Response
     {
         $annonce = new Annonces();
@@ -68,6 +65,7 @@ class AnnoncesController extends AbstractController
     /**
      * @Route("/{id}", name="annonces_show", methods={"GET"})
      */
+    #[Route("/{id}",name:"annonces_show",methods: ['GET'])]
     public function show(Annonces $annonce): Response
     {
         return $this->render('annonces/show.html.twig', [
@@ -77,9 +75,7 @@ class AnnoncesController extends AbstractController
 
 
 
-    /**
-     * @Route("/{id}/edit", name="annonces_edit", methods={"GET","POST"})
-     */
+      #[Route("/{id}/edit",name:"annonces_edit",methods: ['GET','POST'])]
     public function edit(Request $request, Annonces $annonce): Response
     {
         $form = $this->createForm(AnnoncesType::class, $annonce);
@@ -97,9 +93,7 @@ class AnnoncesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="annonces_delete", methods={"POST"})
-     */
+    #[Route("/{id}",name:"annonces_delete",methods: ['POST'])]
     public function delete(Request $request, Annonces $annonce): Response
     {
         if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {

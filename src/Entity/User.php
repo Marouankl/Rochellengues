@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 use App\Repository\UserRepository;
+use Doctrine\Common\Annotations\Annotation\Target;
+use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,73 +12,47 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- *  @ApiResource(
- *
- *
- * )
- *
 
- */
+
+#[ORM\Entity(repositoryClass:UserRepository::class)]
+#[UniqueEntity(fields: 'email',message: "There is already an account with this email")]
+#[ApiResource( collectionOperations: ['get'],
+    itemOperations: ['get'],)]
+
 class User  implements UserInterface
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORm\Column(type: Types::INTEGER)]
     private int $id;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
+
+    #[ORM\Column(type: Types::STRING,length: 180,unique: true)]
     private string $email;
 
-    /**
-     *
-     * @ORM\Column(type="json")
-     */
+    #[ORM\Column(type: Types::JSON)]
+
     private array $roles = [];
 
-    /**
-     *
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: Types::STRING)]
     private string $password;
 
-    /**
-     * @var boolean
-     * @ORM\Column(type="boolean")
-     */
+
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isVerified = false;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private string $nom;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private string $prenom;
 
-    /**
-     *
-     * @ORM\Column(type="string", length=100)
-     */
+
+    #[ORM\Column(type: Types::STRING,length: 100)]
     private string $langue;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="user")
-     */
+
+    #[ORM\ManyToOne(targetEntity: Annonces::class, inversedBy: 'user')]
     private $annonces;
 
     public function __construct()

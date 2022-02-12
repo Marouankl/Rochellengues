@@ -132,6 +132,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "fsevestre/boolean-form-type": {
+        "version": "v2.0.0"
+    },
     "gedmo/doctrine-extensions": {
         "version": "v3.4.0"
     },

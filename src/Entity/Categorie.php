@@ -2,44 +2,38 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=CategorieRepository::class)
- */
+
+#[ORM\Entity(repositoryClass:CategorieRepository::class)]
+#[ApiResource]
 class Categorie
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORm\Column(type: Types::INTEGER)]
     private $id;
 
 
 
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $nom;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="categorie")
-     */
+
+    #[ORM\OneToMany(targetEntity: Categorie::class, indexBy: 'categorie')]
     private $annonces;
 
-    /**
-     * @ORM\one-to-many(targetEntity=Categorie::class, inversedBy="categorie")
-     */
+
+    #[ORM\OneToMany(targetEntity: Categorie::class, indexBy: 'categorie')]
     private $categorie;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Sejours::class, mappedBy="categorie")
-     */
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Sejours::class)]
     private $sejours;
 
     public function __construct()
@@ -116,7 +110,7 @@ class Categorie
         $this->annonces = $annonces;
     }
 
-    public function getCategorie(): ArrayCollection
+    public function getCategorie()
     {
         return $this->categorie;
     }
@@ -141,7 +135,6 @@ class Categorie
     public function removeCategorie(self $categorie): self
     {
         if ($this->categorie->removeElement($categorie)) {
-            // set the owning side to null (unless already changed)
             if ($categorie->getCategorie() === $this) {
                 $categorie->setCategorie(null);
             }
@@ -177,7 +170,6 @@ class Categorie
     public function removeSejour(Sejours $sejour): self
     {
         if ($this->sejours->removeElement($sejour)) {
-            // set the owning side to null (unless already changed)
             if ($sejour->getCategorie() === $this) {
                 $sejour->setCategorie(null);
             }

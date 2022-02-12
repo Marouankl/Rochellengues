@@ -3,66 +3,45 @@
 namespace App\Entity;
 
 use App\Repository\SejourRepository;
+
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-/**
- * @ORM\Entity(repositoryClass=SejourRepository::class)
- * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get", "put", "delete"}
- * )
- */
+#[ORM\Entity(repositoryClass:SejourRepository::class)]
+#[ApiResource]
 class Sejours
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORm\Column(type: Types::INTEGER)]
     private ?int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $titre;
 
 
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORm\Column(type: Types::INTEGER)]
     private $prix;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $langue;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORm\Column(type: Types::INTEGER)]
     private $age;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private $pays;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="sejours")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'sejours')]
+    #[ORM\JoinColumn(nullable:false)]
     private $categorie;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private $start_date;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private $end_date;
 
 

@@ -3,53 +3,6 @@
 
 {% block body %}
 
-    {% block header %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('home') }}">
-                    <img src="{{ asset('img/logo.jpg') }}" style="border-radius: 50%;" alt="Logo" width="70" height="70" class="d-inline-block align-top"> <br/>ochellengues
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('formations') }}">Formations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path ('app_register') }}">Inscription</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home')}}#ance">Publier</a>
-                        </li>
-                        <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ path('home')}}#ance">Annonce</a>
-                                    <a class="dropdown-item" href="{{ path('home')}}#evt">Evenement</a>
-                                </div>
-                            </li>-->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user') }}">Profil</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    {% endblock header %}
-
-
-
-
 
 
     <div class="question-header-faq">
@@ -146,12 +99,7 @@
                 Ce test existe aussi pour les langues suivantes : Anglais, Allemand, Français, Italien</p>
             <p> </p>
         </div>
-
-
-
-
     </div>
-
     </div>
 
 
@@ -161,53 +109,7 @@
 
 
 
-    <footer>
 
-{% block Footer %}
-    <div class="p-3 mb-2 bg-info text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
-                    <div class="card bg-info border-0">
-                        <div class="card-body text-light text-center">
-                            <h5 class="card-title text-white display-4" style="font-size:30px">LA ROCHELLE UNIVERSITÉ</h5>
-                            <p class="d-inline lead">Technoforum | 23 avenue Albert Einstein | BP 33060 - 17031 La Rochelle - France<br>
-                            </p>
 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
-                    <div class="card bg-info border-0">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-white display-4" style="font-size:30px">Contact</h5>
-                            <a class="text-light d-block lead" style="margin-left: -20px" href="#"><i class="fa fa-phone mr-2"></i>+33 (0)5 46 45 91 14</a>
-                            <a class="text-light d-block lead" href="#"><i class="fa fa-envelope mr-2"></i><span class="__cf_email__" data-cfemail="0667626b6f68466a6965676a6e6975722865696b">https://mail.univ-lr.fr</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                    <div class="card bg-info border-0">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-white display-4" style="font-size:30px">Suivez-nous!</h5>
-
-                            <a class="text-light" href="#"><i class="fa fa-facebook-square fa-fw fa-2x"></i></a>
-
-                            <a class="text-light" href="#"><i class="fa fa-twitter-square fa-fw fa-2x"></i></a>
-
-                            <a class="text-light" href="#"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
-
-                            <a class="text-light" href="#"><i class="fa fa-linkedin fa-fw fa-2x"></i></a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock Footer %}
-</footer>
 
 {% endblock body %}

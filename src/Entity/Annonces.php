@@ -6,6 +6,8 @@ use App\Repository\AnnoncesRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -14,71 +16,54 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 
-/**
- * @ORM\Entity(repositoryClass=AnnoncesRepository::class)
- * @Vich\Uploadable
- * @ApiResource
- *
- */
+
+
+#[ORM\Entity(repositoryClass:AnnoncesRepository::class)]
+#[Vich\Uploadable]
+#[ApiResource]
 class Annonces
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORm\Column(type: Types::INTEGER)]
     private  $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private string $titre;
 
-    /**
-     * @ORM\Column(type="text", length=255)
-     */
+
+    #[ORM\Column(type: Types::TEXT,length: 255)]
     private string $description;
 
 
 
-    /**
-     * @param $id
-     */
+
     public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'annonces')]
+    #[ORM\JoinColumn(nullable: false)]
     private $user;
 
 
-    /**
-     * @var string|null
-     * @ORM\Column (type="string", length=255)
-     */
-
+    #[ORM\Column(type: Types::STRING,length: 255)]
     private  $images;
 
-    /**
-     * @var File|null
-     * @Vich\UploadableField(mapping="annonces", fileNameProperty="images")
-     */
+
+    #[Vich\UploadableField(mapping:'annonces',fileNameProperty: 'images' )]
     private $imageFile;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="annonces")
-     * @ORM\JoinColumn(nullable=false)
-     */
+
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'annonces')]
+    #[ORM\JoinColumn(nullable: false)]
     private $categorie;
 
-    /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
-     */
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private $update_at;
 
 
