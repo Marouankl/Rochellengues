@@ -13,17 +13,17 @@ class Contact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private $nom;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private $email;
 
 
-    #[ORm\Column(type: Types::TEXT)]
+    #[ORm\Column(type:'text')]
     private $message;
 
     public function getId(): ?int

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AdminRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -15,19 +16,19 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(type:'integer')]
 
     private ?int $id;
 
-    #[ORM\Column(type: Types::STRING,length: 180,unique: true)]
+    #[ORM\Column(type: 'string',length: 180,unique: true)]
     private ?string $email;
 
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: 'json')]
     private array $roles = ['ROLE_ADMIN'];
 
 
-    #[ORM\Column(type: Types::STRING)]
+    #[ORM\Column(type: 'string')]
 
     private string $password;
 
@@ -120,7 +121,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function __toString(): string
+    #[Pure] public function __toString(): string
     {
         return $this->getEmail();
 

@@ -18,9 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/user", name="user")
-     */
+
+    #[Route('/user',name:'user')]
     public function index(): Response
     {
         $em1 = $this->getDoctrine()->getManager();
@@ -30,9 +29,7 @@ class UserController extends AbstractController
 
     }
 
-    /**
-     * @Route("/list/users", methods="GET")
-     */
+    #[Route('/list/users',methods: ['GET'])]
     public function getListUsers(): Response
     {
 
@@ -46,11 +43,8 @@ class UserController extends AbstractController
     }
 
 
-    /**
-     * @Route("/users/profil/modifier", name="users_profil_modifier")
-     * @param Request $request
-     * @return RedirectResponse|Response
-     */
+
+    #[Route('/users/profil/modifier',name:'users_profil_modifier')]
     public function editProfile(Request $request)
     {
         $user = $this->getUser();

@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PrincipalController extends AbstractController
 {
 
-    //Router pour la page home
-
-     #[Route("/", name:"home")]
+     #[Route('/', name:'home')]
 
     public function index(): Response
     {
@@ -29,7 +27,7 @@ class PrincipalController extends AbstractController
         ]);
     }
 
-    #[Route("/sejour", name:"sejour")]
+    #[Route('/sejour', name:'sejour')]
     public function sejour(): Response
     {
         return $this->render('principal/sejour.html.twig', [
@@ -39,7 +37,7 @@ class PrincipalController extends AbstractController
         ]);
     }
 
-    #[Route("/liste", name:"liste")]
+    #[Route('/liste', name:'liste')]
     public function liste(): Response
     {
         return $this->render('principal/listeAnnonces.hmtl.twig', [
@@ -50,7 +48,7 @@ class PrincipalController extends AbstractController
     }
 
 
-    #[Route("/formations", name:"formations")]
+    #[Route('/formations', name:'formations')]
     public function formations(): Response
     {
         return $this->render('principal/formations.html.twig', [
@@ -61,7 +59,7 @@ class PrincipalController extends AbstractController
     }
 
 
-    #[Route("/teste", name:"teste")]
+    #[Route('/teste', name:'teste')]
     public function test(): Response
     {
         return $this->render('principal/test.html.twig', [
@@ -72,7 +70,7 @@ class PrincipalController extends AbstractController
     }
 
 
-    #[Route("/404", name:"404")]
+    #[Route('/404', name:'404')]
     public function maintenance(): Response
     {
         return $this->render('maintenance/404.html.twig', [
@@ -84,7 +82,7 @@ class PrincipalController extends AbstractController
 
 
 
-    #[Route("/contact", name:"contact")]
+    #[Route('/contact', name:'contact')]
 
     public function contact(Request $request): Response
     {

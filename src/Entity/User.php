@@ -4,6 +4,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Annotations\Annotation\Target;
 use Doctrine\DBAL\Types\Types;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,39 +24,39 @@ class User  implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private int $id;
 
 
-    #[ORM\Column(type: Types::STRING,length: 180,unique: true)]
+    #[ORM\Column(type: 'string',length: 180,unique: true)]
     private string $email;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: 'json')]
 
     private array $roles = [];
 
-    #[ORM\Column(type: Types::STRING)]
+    #[ORM\Column(type: 'string')]
     private string $password;
 
 
-    #[ORM\Column(type: Types::BOOLEAN)]
+    #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private string $nom;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private string $prenom;
 
 
-    #[ORM\Column(type: Types::STRING,length: 100)]
+    #[ORM\Column(type: 'string',length: 100)]
     private string $langue;
 
 
     #[ORM\ManyToOne(targetEntity: Annonces::class, inversedBy: 'user')]
     private $annonces;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->annonces = new ArrayCollection();
     }

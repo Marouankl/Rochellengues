@@ -8,35 +8,39 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 
 #[ORM\Entity(repositoryClass:CategorieRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: ['get'],
+    itemOperations: ['get'],)]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORm\Column(type: Types::INTEGER)]
-    private $id;
+    #[ORm\Column(type: 'integer')]
+    private ?int $id;
 
 
 
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
-    private $nom;
+    #[ORM\Column(type: 'string',length: 255)]
+    private ?string $nom;
 
 
-    #[ORM\OneToMany(targetEntity: Categorie::class, indexBy: 'categorie')]
-    private $annonces;
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Annonces::class)]
+    private ArrayCollection $annonces;
 
 
-    #[ORM\OneToMany(targetEntity: Categorie::class, indexBy: 'categorie')]
-    private $categorie;
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Categorie::class)]
+    private ArrayCollection $categorie;
+
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Sejours::class)]
-    private $sejours;
+    private ArrayCollection $sejours;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->annonces = new ArrayCollection();
         $this->categorie = new ArrayCollection();
@@ -65,7 +69,7 @@ class Categorie
     }
 
     /**
-     * @return Collection|Annonces[]
+     * @return Collection
      */
     public function getAnnonces(): Collection
     {
@@ -110,12 +114,12 @@ class Categorie
         $this->annonces = $annonces;
     }
 
-    public function getCategorie()
+    public function getCategorie(): ArrayCollection
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?self $categorie): self
+    public function setCategorie( $categorie): self
     {
         $this->categorie = $categorie;
 
@@ -144,7 +148,7 @@ class Categorie
     }
 
 
-    public function __toString(): string
+    #[Pure] public function __toString(): string
     {
         return (string)$this->getNom();
     }

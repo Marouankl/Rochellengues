@@ -7,7 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Types\Types;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -26,15 +26,15 @@ class Annonces
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private  $id;
 
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private string $titre;
 
 
-    #[ORM\Column(type: Types::TEXT,length: 255)]
+    #[ORM\Column(type: 'text',length: 255)]
     private string $description;
 
 
@@ -50,7 +50,7 @@ class Annonces
     private $user;
 
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private  $images;
 
 
@@ -63,7 +63,7 @@ class Annonces
     private $categorie;
 
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
     private $update_at;
 
 
@@ -136,7 +136,7 @@ class Annonces
 
 
     /**
-     * @param File| UploadedFile | null $imageFile
+     * @param File|null $images
      * @return Annonces
      */
     public function setImageFile(File $images = null): Annonces

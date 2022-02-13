@@ -14,34 +14,34 @@ class Sejours
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private ?int $id;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+   #[ORM\Column(type: 'string',length: 255)]
     private $titre;
 
 
 
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private $prix;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private $langue;
 
-    #[ORm\Column(type: Types::INTEGER)]
+    #[ORm\Column(type: 'integer')]
     private $age;
 
-    #[ORM\Column(type: Types::STRING,length: 255)]
+    #[ORM\Column(type: 'string',length: 255)]
     private $pays;
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'sejours')]
     #[ORM\JoinColumn(nullable:false)]
     private $categorie;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
     private $start_date;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
     private $end_date;
 
 
