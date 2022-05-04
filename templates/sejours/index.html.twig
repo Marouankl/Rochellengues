@@ -3,23 +3,20 @@
 {% block title %}Sejours index{% endblock %}
 
 {% block body %}
-
-
-
     <h1>Sejours index</h1>
 
-    <table class="table table-bordered table-dark">
+    <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Début de séjour</th>
-                <th scope="col">Fin de séjour</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Langue</th>
-                <th scope="col">Age</th>
-                <th scope="col">Pays</th>
-                <th scope="col">actions</th>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Langue</th>
+                <th>Age</th>
+                <th>Pays</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,12 +24,12 @@
             <tr>
                 <td>{{ sejour.id }}</td>
                 <td>{{ sejour.titre }}</td>
-                <td>{{ sejour.start_date ? sejour.start_date|date('d-m-Y') : '' }}</td>
-                <td>{{ sejour.end_date ? sejour.end_date|date('d-m-Y') : '' }}</td>
                 <td>{{ sejour.prix }}</td>
                 <td>{{ sejour.langue }}</td>
                 <td>{{ sejour.age }}</td>
                 <td>{{ sejour.pays }}</td>
+                <td>{{ sejour.startDate ? sejour.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sejour.endDate ? sejour.endDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('sejours_show', {'id': sejour.id}) }}">show</a>
                     <a href="{{ path('sejours_edit', {'id': sejour.id}) }}">edit</a>
@@ -40,13 +37,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="9">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('sejours_new') }}">Create new</a>
-
-
 {% endblock %}

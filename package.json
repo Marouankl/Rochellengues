@@ -9,6 +9,9 @@
     "jw-vue-pagination": "^1.0.3",
     "vue": "^2.6.14",
     "vue-ads-pagination": "^2.1.7",
+    "vue-easy-lightbox": "^0.16.2",
+    "vue-gallery-slideshow": "^1.5.2",
+    "vue-images": "^1.1.0",
     "vue-loader": "^15.9.8",
     "vue-picture-swipe": "^2.1.0",
     "vue-router": "^3.5.3",
@@ -22,6 +25,7 @@
     "@symfony/webpack-encore": "^1.7.0",
     "axios": "^0.24.0",
     "sass": "^1.45.1",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "url-loader": "^4.1.1"
   }
 }

@@ -2,7 +2,7 @@ container {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background-image: url("../img/blocage-a-l-entree.jpg");
+
     background-repeat: no-repeat;
     background-size: 100% 100%
 }

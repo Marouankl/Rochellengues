@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AnnoncesRepository;
+
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,9 +19,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 
 
+
+/**
+ * @Vich\Uploadable]
+
+ **/
 #[ORM\Entity(repositoryClass:AnnoncesRepository::class)]
-#[Vich\Uploadable]
 #[ApiResource]
+#[ORM\Table(name: 'annonces')]
 class Annonces
 {
 
@@ -53,9 +59,12 @@ class Annonces
     #[ORM\Column(type: 'string',length: 255)]
     private  $images;
 
+    /**
+     * @Vich\UploadableField(mapping="annonces", fileNameProperty="images")
+     * @var File
+     */
 
-    #[Vich\UploadableField(mapping:'annonces',fileNameProperty: 'images' )]
-    private $imageFile;
+    private File $imageFile;
 
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'annonces')]

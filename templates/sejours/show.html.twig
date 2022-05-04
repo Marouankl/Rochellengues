@@ -3,43 +3,41 @@
 {% block title %}Sejours{% endblock %}
 
 {% block body %}
-
-
     <h1>Sejours</h1>
 
-    <table class="table table-bordered">
+    <table class="table">
         <tbody>
             <tr>
-                <th scope="col">Id</th>
+                <th>Id</th>
                 <td>{{ sejour.id }}</td>
             </tr>
             <tr>
-                <th scope="col">Titre</th>
+                <th>Titre</th>
                 <td>{{ sejour.titre }}</td>
             </tr>
             <tr>
-                <th scope="col">Début de séjour</th>
-                <td>{{ sejour.start_date ? sejour.start_date|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Fin de séjour</th>
-                <td>{{ sejour.end_date ? sejour.end_date|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Prix</th>
+                <th>Prix</th>
                 <td>{{ sejour.prix }}</td>
             </tr>
             <tr>
-                <th scope="col">Langue</th>
+                <th>Langue</th>
                 <td>{{ sejour.langue }}</td>
             </tr>
             <tr>
-                <th scope="col">Age</th>
+                <th>Age</th>
                 <td>{{ sejour.age }}</td>
             </tr>
             <tr>
-                <th scope="col">Pays</th>
+                <th>Pays</th>
                 <td>{{ sejour.pays }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ sejour.startDate ? sejour.startDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End_date</th>
+                <td>{{ sejour.endDate ? sejour.endDate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
@@ -49,6 +47,4 @@
     <a href="{{ path('sejours_edit', {'id': sejour.id}) }}">edit</a>
 
     {{ include('sejours/_delete_form.html.twig') }}
-
-
 {% endblock %}

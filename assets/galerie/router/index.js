@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import galeries from "../components/galeries";
+import galeries from "../components/Galeries";
 
 
 

@@ -30,17 +30,17 @@ class Categorie
 
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Annonces::class)]
-    private ArrayCollection $annonces;
+    private $annonces;
 
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Categorie::class)]
-    private ArrayCollection $categorie;
+    private  $categorie;
 
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Sejours::class)]
-    private ArrayCollection $sejours;
+    private $sejours;
 
-    #[Pure] public function __construct()
+    public function __construct()
     {
         $this->annonces = new ArrayCollection();
         $this->categorie = new ArrayCollection();

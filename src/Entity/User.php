@@ -56,10 +56,7 @@ class User  implements UserInterface
     #[ORM\ManyToOne(targetEntity: Annonces::class, inversedBy: 'user')]
     private $annonces;
 
-    #[Pure] public function __construct()
-    {
-        $this->annonces = new ArrayCollection();
-    }
+
 
     /**
      * @param int $id
