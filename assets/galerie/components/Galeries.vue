@@ -1,19 +1,16 @@
 
 <template>
-  <div id="galeries">
+  <div>
    <div class="image">
      <img :src="activePho" alt>
    </div>
     <div class="images" >
       <div v-for="(photo,index) in photos">
-        <img :src="photo" @mouseover="changeActivePho(index)" :class="{active: index==indexOfActive ? true : false}" alt>
+        <img :src="photo" @mouseenter="changeActivePho(index)" :class="{ active: index==indexOfActive ?true : false}" alt>
 
       </div>
     </div>
-
-
-
-    </div>
+  </div>
 
 
 </template>
@@ -23,20 +20,19 @@ export default {
   data() {
     return{
       indexOfActive:0,
-      activePho:'img/image8.jpg',
-      photo: [
-        'images/image7.jpg',
-        'images/image3.jpg',
-        'images/image4.jpg',
-        'images/image5.jpg',
-        'images/image6.jpg',
+      activePho:'img/image1.jpg',
+      photos: [
+        'img/image1.jpg',
+        'img/image2.jpg',
+        'img/image4.jpg',
+
       ]
     }
 
   },
   methods: {
     changeActivePho(index){
-      this.activePho = this.photo[index];
+      this.activePho = this.photos[index];
       this.indexOfActive=index;
     }
 
@@ -53,20 +49,19 @@ export default {
 <style scoped>
 
 .image{
-  width: 150px;
+  width: 1000px;
 }
 .image img{
-  width: 100%;
+  width: 80%;
 
 }
-
 .images{
-  width: 150px;
+  width: 500px;
   display: flex;
 
 }
 .images img{
-  width: 150px;
+  width: 50px;
   margin: 10px;
 }
 </style>
